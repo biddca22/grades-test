@@ -43,3 +43,16 @@ print(students)
 head(students)
 ```
 
+# Question 5
+```{r}
+students_per_group <- students |>
+  group_by(group) |>
+  summarise(num_students = n())  
+ggplot(students_per_group, aes(x = group, y = num_students, fill = group)) +
+  geom_bar(stat = "identity") + 
+  labs(title = "Number of Students per Group", 
+       x = "Group", 
+       y = "Number of Students") +
+  theme_minimal()
+```
+
