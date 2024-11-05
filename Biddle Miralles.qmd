@@ -163,3 +163,30 @@ extract_data <- pivoted_data |>
 head(extract_data)
 ```
 
+# Question 13
+```{r}
+average_grades_13 <- grades |>
+  filter(course == c("Archery and Marksmanship", "Onmyodo and Occult Arts")) |> 
+  group_by(id) |>  
+  summarise(
+    avg_archery = mean(grade[course == "Archery and Marksmanship"], na.rm = TRUE),
+    avg_onmyodo = mean(grade[course == "Onmyodo and Occult Arts"], na.rm = TRUE),  
+    .groups = "drop"  
+  )
+
+ggplot(average_grades_13, aes(x = avg_onmyodo, y = avg_archery)) +
+  geom_point(color = "blue", size = 3, alpha = 0.7) +  
+  geom_smooth(method = "lm", color = "red", se = FALSE) +  
+  labs(
+    title = "Average Grades in Archery and Marksmanship vs. Onmyodo and Occult Arts",
+    x = "Average Grade in Onmyodo and Occult Arts",
+    y = "Average Grade in Archery and Marksmanship"
+  ) +
+  theme_minimal(base_size = 15) +  
+  theme(
+    plot.title = element_text(hjust = 0.5),  
+    axis.title = element_text(size = 14),  
+    axis.text = element_text(size = 12)  
+  )
+```
+
