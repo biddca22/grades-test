@@ -56,3 +56,19 @@ ggplot(students_per_group, aes(x = group, y = num_students, fill = group)) +
   theme_minimal()
 ```
 
+# Question 6
+```{r}
+average_grades <- grades |>
+  filter(course == "Tea Ceremony and Zen Meditation") |>
+  group_by(group) |>
+  summarise(average_grade = mean(grade, na.rm = TRUE))
+
+ggplot(average_grades, aes(x = group, y = average_grade, fill = group)) +
+  geom_col() +
+  labs(title = "Average Grades in 'Tea Ceremony and Zen Meditation' by Group",
+       x = "Group", 
+       y = "Average Grade") +
+  theme_minimal()
+
+```
+
