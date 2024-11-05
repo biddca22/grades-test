@@ -72,3 +72,14 @@ ggplot(average_grades, aes(x = group, y = average_grade, fill = group)) +
 
 ```
 
+# Question 7
+```{r}
+ggplot(grades, aes(x = factor(trimester), y = grade)) +
+  geom_boxplot(aes(fill = factor(trimester))) +  
+  labs(title = "Distribution of Grades Across Trimesters",
+       x = "Trimester", 
+       y = "Grades") +
+  theme_minimal() +  
+  scale_fill_brewer(palette = "Set2")
+```
+
