@@ -5,3 +5,16 @@ format:
   html:
     code-fold: true
 ---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+# Question 1
+```{r}
+library(readr)
+grades <- read_csv("grades.csv")
+```
+
