@@ -114,3 +114,21 @@ grades_onmyodo <- grades |>
 head(grades_onmyodo)
 ```
 
+# Question 10
+```{r}
+dist_grades_onmyodo <- grades_onmyodo |>
+  group_by(num_grades) |>  
+  summarise(num_students = n(), .groups = "drop")  
+
+head(dist_grades_onmyodo)
+
+ggplot(dist_grades_onmyodo, aes(x = factor(num_grades), y = num_students)) +
+  geom_bar(stat = "identity", fill = "steelblue") +  
+  labs(title = "Distribution of the Number of Grades in 'Onmyodo and Occult Arts'",
+       x = "Number of Grades", 
+       y = "Number of Students") +
+  theme_minimal() +  
+  scale_x_discrete(breaks = seq(min(dist_grades_onmyodo$num_grades), max(dist_grades_onmyodo$num_grades), by = 1))
+
+```
+
