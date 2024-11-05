@@ -33,3 +33,13 @@ num_distinct_students <- grades |>
 sentence <- paste("The data set contains", num_distinct_students, "distinct students.")
 print(sentence)  
 ```
+
+# Question 4
+```{r}
+students <- grades |>
+  distinct(id, group)  
+
+print(students)
+head(students)
+```
+
