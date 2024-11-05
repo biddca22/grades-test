@@ -148,3 +148,18 @@ ggplot(average_grades_per_group, aes(x = group, y = avg_num_grades)) +
   theme_minimal()
 ```
 
+# Question 12
+```{r}
+avg_grades_by_course <- grades |>
+  group_by(id, group, course) |> 
+  summarise(avg_grade = mean(grade, na.rm = TRUE), .groups = "drop")
+
+pivoted_data <- avg_grades_by_course |>
+  pivot_wider(names_from = course, values_from = avg_grade, values_fill = list(avg_grade = NA))
+
+extract_data <- pivoted_data |>
+  select(id, group, `Archery and Marksmanship`, `Bushido and Samurai Code`)  
+
+head(extract_data)
+```
+
