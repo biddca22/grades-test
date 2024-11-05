@@ -104,3 +104,13 @@ summary_stats
 
 ```
 
+# Question 9
+```{r}
+grades_onmyodo <- grades |>
+  filter(course == "Onmyodo and Occult Arts") |>  
+  group_by(id, group) |>
+  summarise(num_grades = n(), .groups = "drop")
+
+head(grades_onmyodo)
+```
+
