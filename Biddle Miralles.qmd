@@ -18,3 +18,9 @@ library(readr)
 grades <- read_csv("grades.csv")
 ```
 
+# Question 2
+```{r}
+  sentence <- paste("The data set contains", nrow(grades), "grades.")
+  print(sentence)
+```
+
