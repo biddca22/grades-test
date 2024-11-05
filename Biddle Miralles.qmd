@@ -83,3 +83,24 @@ ggplot(grades, aes(x = factor(trimester), y = grade)) +
   scale_fill_brewer(palette = "Set2")
 ```
 
+# Question 8
+```{r}
+library(knitr)
+grades_per_student <- grades |>
+  group_by(id, group) |>  
+  summarise(num_grades = n(), .groups = "drop")  
+
+head(grades_per_student)  
+
+summary_stats <- grades_per_student |>
+  summarise(
+    min_grades = min(num_grades),
+    max_grades = max(num_grades),
+    average_grades = mean(num_grades),
+    median_grades = median(num_grades)
+  )
+
+summary_stats
+
+```
+
