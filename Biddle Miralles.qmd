@@ -132,3 +132,19 @@ ggplot(dist_grades_onmyodo, aes(x = factor(num_grades), y = num_students)) +
 
 ```
 
+# Question 11
+```{r}
+average_grades_per_group <- grades_onmyodo |>
+  group_by(group) |>
+  summarise(avg_num_grades = mean(num_grades), .groups = "drop")
+
+head(average_grades_per_group)
+
+ggplot(average_grades_per_group, aes(x = group, y = avg_num_grades)) +
+  geom_bar(stat = "identity", fill = "skyblue") +  
+  labs(title = "Average Number of Grades per Student in 'Onmyodo and Occult Arts' by Group",
+       x = "Group", 
+       y = "Average Number of Grades") +
+  theme_minimal()
+```
+
