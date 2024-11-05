@@ -1,0 +1,7 @@
+---
+title: "Biddle Miralles"
+author: "Carlos Biddle Miralles"
+format: 
+  html:
+    code-fold: true
+---
