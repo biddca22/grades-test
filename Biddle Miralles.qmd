@@ -190,3 +190,21 @@ ggplot(average_grades_13, aes(x = avg_onmyodo, y = avg_archery)) +
   )
 ```
 
+# Question 14
+```{r}
+average_grades_14 <- grades |>
+  filter(course == c("Shinto and Buddhist Philosophy", "Kenjutsu and Swordsmanship")) |>
+  group_by(group, id) |>
+  summarise(
+    avg_shinto = mean(grade[course == "Shinto and Buddhist Philosophy"], na.rm = TRUE),
+    avg_kenjutsu = mean(grade[course == "Kenjutsu and Swordsmanship"], na.rm = TRUE),
+    .groups = "drop"  
+  )
+
+correlation_results <- average_grades_14 |>
+  group_by(group) |>
+  summarise(correlation = cor(avg_shinto, avg_kenjutsu, use = "complete.obs"), .groups = "drop")  
+
+print(correlation_results)
+```
+
