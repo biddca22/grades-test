@@ -203,8 +203,18 @@ average_grades_14 <- grades |>
 
 correlation_results <- average_grades_14 |>
   group_by(group) |>
-  summarise(correlation = cor(avg_shinto, avg_kenjutsu, use = "complete.obs"), .groups = "drop")  
+  summarise(correlation = cor(avg_shinto, avg_kenjutsu, use = "complete.obs"))  
 
 print(correlation_results)
+```
+
+# Question 15
+```{r}
+most_correlated_group <- correlation_results |>
+  filter(!is.na(correlation)) |>  
+  arrange(desc(abs(correlation))) |>
+  slice(1) 
+
+print(most_correlated_group)
 ```
 
