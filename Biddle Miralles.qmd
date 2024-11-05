@@ -24,3 +24,12 @@ grades <- read_csv("grades.csv")
   print(sentence)
 ```
 
+# Question 3
+```{r}
+num_distinct_students <- grades |>
+  distinct(id) |>
+  nrow()  
+
+sentence <- paste("The data set contains", num_distinct_students, "distinct students.")
+print(sentence)  
+```
